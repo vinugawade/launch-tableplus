@@ -1,11 +1,8 @@
 {
   "name": "@ur-pkg/launch-tableplus",
   "version": "1.0.0-beta",
-  "description": "Opens the database in the TablePlus GUI",
+  "description": "A Lando plugin for managing databases with TablePlus.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vinugawade/launch-tableplus.git"
@@ -43,5 +40,10 @@
     "lodash.filter": "^4.6.0",
     "lodash.includes": "^4.3.0",
     "lodash.isempty": "^4.4.0"
-  }
+  },
+  "bundledDependencies": [
+    "lodash.filter",
+    "lodash.includes",
+    "lodash.isempty"
+  ]
 }
