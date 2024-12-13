@@ -62,7 +62,7 @@ module.exports = (lando) => ({
       const connectionUrl = `${validDbType}://${user}:${password}@127.0.0.1:${port}/${database}?statusColor=007F3D&environment=local&name=${app.name}`;
       console.log(`Opening TablePlus with connection URL: ${connectionUrl}`);
 
-      openTablePlus(connectionUrl);
+      openTablePlus(connectionUrl, lando);
     } catch (error) {
       console.error(`Error: ${error.message}`);
     }
@@ -70,7 +70,7 @@ module.exports = (lando) => ({
 });
 
 // Open TablePlus based on OS type
-function openTablePlus(connectionUrl) {
+function openTablePlus(connectionUrl, lando) {
   const osType = process.platform;
   if (osType === "darwin") {
     const appPath = getMacAppPath();
