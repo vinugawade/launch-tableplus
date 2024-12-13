@@ -1,0 +1,47 @@
+{
+  "name": "@ur-pkg/launch-tableplus",
+  "version": "1.0.0-beta",
+  "description": "Opens the database in the TablePlus GUI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinugawade/lando-tableplus.git"
+  },
+  "keywords": [
+    "lando",
+    "plugin",
+    "tableplus",
+    "database",
+    "mysql",
+    "mariadb",
+    "postgresql",
+    "postgres",
+    "mac",
+    "window",
+    "cli",
+    "utility",
+    "php",
+    "laravel",
+    "lamp"
+  ],
+  "author": "Vinay Gawade <vinulike11+npm@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "lando": {
+    "services": [],
+    "scripts": [
+      "tableplus"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/vinugawade/lando-tableplus/issues"
+  },
+  "homepage": "https://github.com/vinugawade/lando-tableplus#readme",
+  "dependencies": {
+    "lodash.filter": "^4.6.0",
+    "lodash.includes": "^4.3.0",
+    "lodash.isempty": "^4.4.0"
+  }
+}
