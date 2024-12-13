@@ -3,6 +3,7 @@
   "version": "1.0.0-beta",
   "description": "A Lando plugin for managing databases with TablePlus.",
   "main": "index.js",
+  "icon": "logo.png",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vinugawade/launch-tableplus.git"
