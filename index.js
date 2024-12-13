@@ -1,3 +1,3 @@
 'use strict';
 
-module.export = lando = {};
+module.exports = lando => {};
