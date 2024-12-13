@@ -7,11 +7,11 @@ const { getDbService } = require("../helper/db-services");
 
 module.exports = (lando) => ({
   command: "tableplus",
-  describe: "Open the database in the TablePlus GUI",
+  describe: "📚 Open the database in the TablePlus GUI",
   level: "app",
   options: {
     service: {
-      describe: "Specify the database service",
+      describe: "🛠 Specify the database service",
       alias: "s",
       default: "database",
     },
@@ -21,7 +21,7 @@ module.exports = (lando) => ({
       const app = await lando.getApp(options._app.root);
 
       if (!app || !app.info) {
-        throw new Error("Unable to retrieve application info.");
+        throw new Error("🤔 Unable to retrieve application info. Is this even Lando?");
       }
 
       const serviceFilter = options.service || "database";
@@ -33,13 +33,13 @@ module.exports = (lando) => ({
       );
 
       if (isEmpty(services)) {
-        throw new Error("No matching database services found.");
+        throw new Error("🔎 No matching database services found. Did you configure it?");
       }
 
       const dbService = getDbService(app, services);
 
       if (!dbService || !dbService.external_connection || !dbService.creds) {
-        throw new Error("Could not retrieve database connection details.");
+        throw new Error("❌ Could not retrieve database connection details. Uh-oh!");
       }
 
       const {
@@ -47,24 +47,24 @@ module.exports = (lando) => ({
         creds: { user, password, database },
         type,
       } = dbService;
+
       const validDbTypes = ["mariadb", "mysql", "postgresql", "postgres"];
 
-      const validDbType = validDbTypes.find((type) =>
-        dbService.type.includes(type)
+      const validDbType = validDbTypes.find((dbType) =>
+        dbService.type.includes(dbType)
       );
 
       if (!validDbType) {
         throw new Error(
-          "Currently, only MySQL, MariaDB, and PostgreSQL are supported."
+          "⚠️ Currently, only MySQL, MariaDB, and PostgreSQL are supported. Sorry!"
         );
       }
 
       const connectionUrl = `${validDbType}://${user}:${password}@127.0.0.1:${port}/${database}?statusColor=007F3D&environment=local&name=${app.name}`;
-      console.log(`Opening TablePlus with connection URL: ${connectionUrl}`);
 
       openTablePlus(connectionUrl, lando);
     } catch (error) {
-      console.error(`Error: ${error.message}`);
+      console.error(`💥 Error: ${error.message}`);
     }
   },
 });
@@ -74,18 +74,20 @@ function openTablePlus(connectionUrl, lando) {
   const osType = process.platform;
   if (osType === "darwin") {
     const appPath = getMacAppPath();
+    console.log("🍎 Detected macOS! Opening TablePlus...");
     lando.shell.sh(["open", connectionUrl, "-a", appPath], {
       mode: "exec",
       detached: true,
     });
   } else if (osType === "win32") {
     const tablePlusExePath = "C:\\Program Files\\TablePlus\\TablePlus.exe";
+    console.log("🖥 Detected Windows! Opening TablePlus...");
     lando.shell.sh([tablePlusExePath, connectionUrl], {
       mode: "exec",
       detached: true,
     });
   } else {
-    console.error("Unsupported operating system for TablePlus integration.");
+    console.error("🌍 Unsupported operating system for TablePlus integration. Sorry!");
   }
 }
 
@@ -94,5 +96,6 @@ function getMacAppPath() {
   const tablePlusPath = "/Applications/TablePlus.app/Contents/MacOS/TablePlus";
   const setAppPath =
     "/Applications/Setapp/TablePlus.app/Contents/MacOS/TablePlus";
+  console.log("🔍 Checking for TablePlus installation...");
   return require("fs").existsSync(setAppPath) ? setAppPath : tablePlusPath;
 }

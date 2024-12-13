@@ -5,7 +5,10 @@
  * @returns {object|null} The matching database service or null.
  */
 function getDbService(app, services) {
-  if (!services.length) return null;
+  if (!services.length) {
+    console.error("😢 No services provided to search for a database!");
+    return null;
+  }
 
   const dbService = services.find((service) =>
     ['mysql', 'mariadb'].some((dbType) => service.type.includes(dbType)) &&
@@ -13,10 +16,11 @@ function getDbService(app, services) {
   );
 
   if (!dbService) {
-    console.error("No database service with external connection found.");
+    console.error("🔍 No database service with external connection found. Keep looking!");
     return null;
   }
 
+  console.log("🎉 Database service found! Time to get to work!");
   return dbService;
 }
 
