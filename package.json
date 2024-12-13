@@ -1,6 +1,6 @@
 {
   "name": "@ur-pkg/launch-tableplus",
-  "version": "1.0.0-beta",
+  "version": "1.0.0",
   "description": "A Lando plugin for managing databases with TablePlus.",
   "main": "index.js",
   "icon": "logo.png",
