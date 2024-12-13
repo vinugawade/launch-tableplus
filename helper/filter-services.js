@@ -1,4 +1,5 @@
-const _ = require('lodash');
+const includes = require("lodash.includes");
+const isEmpty = require("lodash.isempty");
 
 /**
  * Filters the services based on the provided service name.
@@ -7,7 +8,7 @@ const _ = require('lodash');
  * @returns {boolean} Whether the service matches the filter.
  */
 function filterServices(service, serviceFilter = []) {
-  return _.isEmpty(serviceFilter) || _.includes(serviceFilter, service);
+  return isEmpty(serviceFilter) || includes(serviceFilter, service);
 }
 
 exports.filterServices = filterServices;

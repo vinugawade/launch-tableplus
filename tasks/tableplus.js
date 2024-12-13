@@ -1,6 +1,7 @@
 "use strict";
 
-const _ = require("lodash");
+const isEmpty = require("lodash.isempty");
+const filter = require("lodash.filter");
 const { filterServices } = require("../helper/filter-services");
 const { getDbService } = require("../helper/db-services");
 
@@ -27,11 +28,11 @@ module.exports = (lando) => ({
 
       await app.init();
 
-      const services = _.filter(app.info, (service) =>
+      const services = filter(app.info, (service) =>
         filterServices(service.service, serviceFilter)
       );
 
-      if (_.isEmpty(services)) {
+      if (isEmpty(services)) {
         throw new Error("No matching database services found.");
       }
 
