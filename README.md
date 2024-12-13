@@ -1,7 +1,7 @@
 # `@ur-pkg/launch-tableplus`
 
 <h1 align="center">
-    <img src="logo.png" alt="logo" width="200">
+    <img src="https://github.com/vinugawade/launch-tableplus/raw/master/logo.png" alt="logo" width="200">
 </h1>
 
  ![GitHub package.json version](https://img.shields.io/github/package-json/v/vinugawade/launch-tableplus?style=flat-square) ![GitHub Repo stars](https://img.shields.io/github/stars/vinugawade/launch-tableplus?color=yellow&style=flat-square) ![GitHub forks](https://img.shields.io/github/forks/vinugawade/launch-tableplus?color=white&style=flat-square)
